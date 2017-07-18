@@ -36,23 +36,3 @@ fi
 # COMBINATION ATTACK---------------------------------------------------------------------- 
 # this one can take 12+ hours, don't use it by default
 # "$HASHCAT" -m "$HASH_TYPE" -a 1 "$HASH_FILE" dicts/rockyou.txt dicts/rockyou.txt --potfile-path "POT_FILE" --opencl-devices 2 
-
-# Session..........: hashcat
-# Status...........: Exhausted
-# Hash.Type........: MD5
-# Hash.Target......: hashcat-3.6.0/example0.hash
-# Time.Started.....: Sun Jul  9 22:28:27 2017 (12 hours, 24 mins)
-# Time.Estimated...: Mon Jul 10 10:53:06 2017 (6 secs)
-# Guess.Base.......: File (dicts/rockyou.txt), Left Side
-# Guess.Mod........: File (dicts/rockyou.txt), Right Side
-# Speed.Dev.#2.....:  4490.7 MH/s (6.68ms)
-# Recovered........: 4120/6494 (63.44%) Digests, 0/1 (0.00%) Salts
-# Recovered/Time...: CUR:0,13,N/A AVG:3,182,4372 (Min,Hour,Day)
-# Progress.........: 205701367493846/205730140143616 (99.99%)
-# Rejected.........: 2006/205701367493846 (0.00%)
-# Restore.Point....: 14343296/14343296 (100.00%)
-# Candidates.#2....: $HEX[3033323639346120627574746572666c79] -> $HEX[042a0337c2a156616d6f732103042a0337c2a156616d6f732103]
-# HWMon.Dev.#2.....: Temp: 77c Fan: 85% Util: 95% Core:1911MHz Mem:3802MHz Bus:8
-
-# Started: Sun Jul  9 22:28:27 2017
-# Stopped: Mon Jul 10 10:53:01 2017
