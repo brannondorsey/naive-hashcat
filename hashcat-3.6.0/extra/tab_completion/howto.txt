@@ -1,0 +1,4 @@
+run:
+source ./install
+OR
+source ./hashcat.sh # not working permanently (i.e. not working after a reboot)
