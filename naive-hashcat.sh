@@ -5,10 +5,21 @@ POT_FILE="${POT_FILE:-hashcat.pot}"
 HASH_TYPE="${HASH_TYPE:-0}"
 # WEIGHT="${WEIGHT:-"medium"}" # light, medium, heavy
 
-if [ $(uname -m) == 'x86_64' ]; then
-	HASHCAT="./hashcat-3.6.0/hashcat64.bin"
-else
-	HASHCAT="./hashcat-3.6.0/hashcat32.bin"
+# check OSX
+if [ "$(uname)" == 'Darwin' ] ; then
+	if [ -f hashcat-src/hashcat ] ; then
+		HASHCAT="./hashcat-src/hashcat"
+	else
+		echo "You are running naive-hashcat on a MacOS/OSX machine but have not yet built the hashcat binary."
+		echo "Please run ./build-hashcat-osx.sh and try again."
+		exit 1
+	fi
+elif [ "$(uname)" == 'Linux' ] ; then
+	if [ $(uname -m) == 'x86_64' ]; then
+		HASHCAT="./hashcat-3.6.0/hashcat64.bin"
+	else
+		HASHCAT="./hashcat-3.6.0/hashcat32.bin"
+	fi
 fi
 
 # LIGHT
