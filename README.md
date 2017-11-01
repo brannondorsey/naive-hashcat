@@ -57,7 +57,7 @@ To crack your hashes, pass this file as `HASH_FILE=hashes.txt` to the command be
 `naive-hashcat.sh` takes, at most, three parameters. All parameters are expressed using unix environment variables. The command below shows the default values set for each of the configurable environment variables that `naive-hashcat.sh` uses:
 
 ```bash
-HASH_FILE=hashcat-3.6.0/examples0.hash POT_FILE=hashcat.pot HASH_MODE=0 ./naive-hashcat.sh
+HASH_FILE=hashcat-3.6.0/examples0.hash POT_FILE=hashcat.pot HASH_TYPE=0 ./naive-hashcat.sh
 ```
 
 - `HASH_FILE` is a text file with one hash per line. These are the password hashes to be cracked.
