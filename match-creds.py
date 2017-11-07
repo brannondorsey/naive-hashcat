@@ -22,12 +22,12 @@ if __name__ == '__main__':
     args = parse_args()
     with open(args.accounts, 'r') as f:
         hash_to_username = { hsh: username for username, hsh in \
-                         [l.split(args.delimiter) for l in f.read().split('\n') \
-                          if len(l.split(args.delimiter)) > 1] }
+                         [l.split(args.delimiter,1) for l in f.read().split('\n') \
+                          if len(l.split(args.delimiter,1)) > 1] }
     # print(hash_to_username)
     with open(args.potfile, 'r') as f:
-        hash_to_pw = { hsh: pw for hsh, pw in [l.split(':') for l in f.read().split('\n') \
-                                               if len(l.split(':')) > 1]}
+        hash_to_pw = { hsh: pw for hsh, pw in [l.split(':',1) for l in f.read().split('\n') \
+                                               if len(l.split(':',1)) > 1]}
 
     for hsh, username in hash_to_username.items():
         if hsh in hash_to_pw:
