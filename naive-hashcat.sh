@@ -14,11 +14,19 @@ if [ "$(uname)" == 'Darwin' ] ; then
 		echo "Please run ./build-hashcat-osx.sh and try again."
 		exit 1
 	fi
+# check Linux
 elif [ "$(uname)" == 'Linux' ] ; then
 	if [ $(uname -m) == 'x86_64' ]; then
 		HASHCAT="./hashcat-3.6.0/hashcat64.bin"
 	else
 		HASHCAT="./hashcat-3.6.0/hashcat32.bin"
+	fi
+# check Windows
+elif [ "$(uname)" == 'MINGW64_NT-10.0' ] ; then
+	if [ $(uname -m) == 'x86_64' ]; then
+		HASHCAT="./hashcat-3.6.0/hashcat64.exe"
+	else
+		HASHCAT="./hashcat-3.6.0/hashcat32.exe"
 	fi
 fi
 
