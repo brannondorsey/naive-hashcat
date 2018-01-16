@@ -10,7 +10,7 @@ __DISCLAIMER: This software is for educational purposes only. This software shou
 git clone https://github.com/brannondorsey/naive-hashcat
 cd naive-hashcat
 
-# if you are on MacOS/OSX, run this. If on linux, skip...
+# if you are on MacOS/OSX, run this. If on linux or windows, skip...
 ./build-hashcat-osx.sh
 
 # download the 134MB rockyou dictionary file
