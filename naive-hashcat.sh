@@ -21,11 +21,12 @@ else
 
 	# build on Linux or OSX
 	if [ "$(uname)" == 'Darwin' ] || [ "$(uname)" == 'Linux' ]; then
-		make linux
-
+		cd hashcat && make linux && cd ..
+		HASHCAT="./hashcat/hashcat.bin"
 	# build on Windows
 	elif [ "$(uname)" == 'MINGW64_NT-10.0' ] ; then
-		make win
+		cd hashcat && make win && cd ..
+		HASHCAT="./hashcat/hashcat.exe"
 	else
 		echo "Operating system not supported."
 		exit 1
