@@ -10,9 +10,6 @@ __DISCLAIMER: This software is for educational purposes only. This software shou
 git clone https://github.com/brannondorsey/naive-hashcat
 cd naive-hashcat
 
-# if you are on MacOS/OSX, run this. If on linux or windows, skip...
-./build-hashcat-osx.sh
-
 # download the 134MB rockyou dictionary file
 curl -L -o dicts/rockyou.txt https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
 
@@ -342,4 +339,4 @@ Below is a list of hash-type codes supported by hashcat. If you don't know the t
   15600 | Ethereum Wallet, PBKDF2-HMAC-SHA256              | Password Managers
   15700 | Ethereum Wallet, SCRYPT                          | Password Managers
   99999 | Plaintext                                        | Plaintext
-``` 
+```
