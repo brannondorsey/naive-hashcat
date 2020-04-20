@@ -8,33 +8,31 @@ HASH_TYPE="${HASH_TYPE:-0}"
 # check already installed
 if [ -x "$(command -v hashcat)" ] ; then
 	HASHCAT="hashcat"
-# check OSX
-elif [ "$(uname)" == 'Darwin' ] ; then
-	if [ -f hashcat-src/hashcat ] ; then
-		HASHCAT="./hashcat-src/hashcat"
+elif [ -f hashcat/hashcat.bin ] ; then
+	HASHCAT="./hashcat/hashcat.bin"
+elif [ -f hashcat/hascat.exe ] ; then
+	HASHCAT="./hashcat/hashcat.exe"
+else
+	# check if downloaded
+	if [ -f hashcat/hashcat ] ; then
+		git submodule init
+		git submodule update
+	fi
+
+	# build on Linux or OSX
+	if [ "$(uname)" == 'Darwin' ] || [ "$(uname)" == 'Linux' ]; then
+		make linux
+
+	# build on Windows
+	elif [ "$(uname)" == 'MINGW64_NT-10.0' ] ; then
+		make win
 	else
-		echo "You are running naive-hashcat on a MacOS/OSX machine but have not yet built the hashcat binary."
-		echo "Please run ./build-hashcat-osx.sh and try again."
+		echo "Operating system not supported."
 		exit 1
 	fi
-# check Linux
-elif [ "$(uname)" == 'Linux' ] ; then
-	if [ $(uname -m) == 'x86_64' ]; then
-		HASHCAT="./hashcat-3.6.0/hashcat64.bin"
-	else
-		HASHCAT="./hashcat-3.6.0/hashcat32.bin"
-	fi
-# check Windows
-elif [ "$(uname)" == 'MINGW64_NT-10.0' ] ; then
-	if [ $(uname -m) == 'x86_64' ]; then
-		HASHCAT="./hashcat-3.6.0/hashcat64.exe"
-	else
-		HASHCAT="./hashcat-3.6.0/hashcat32.exe"
-	fi
+
 fi
 
-echo "$HASHCAT"
-exit
 # LIGHT
 # DICTIONARY ATTACK-----------------------------------------------------------------------
 # begin with a _very_ simple and naive dictionary attack. This is blazing fast and
