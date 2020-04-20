@@ -5,8 +5,11 @@ POT_FILE="${POT_FILE:-hashcat.pot}"
 HASH_TYPE="${HASH_TYPE:-0}"
 # WEIGHT="${WEIGHT:-"medium"}" # light, medium, heavy
 
+# check already installed
+if [ -x "$(command -v hashcat)" ] ; then
+	HASHCAT="hashcat"
 # check OSX
-if [ "$(uname)" == 'Darwin' ] ; then
+elif [ "$(uname)" == 'Darwin' ] ; then
 	if [ -f hashcat-src/hashcat ] ; then
 		HASHCAT="./hashcat-src/hashcat"
 	else
@@ -30,9 +33,11 @@ elif [ "$(uname)" == 'MINGW64_NT-10.0' ] ; then
 	fi
 fi
 
+echo "$HASHCAT"
+exit
 # LIGHT
 # DICTIONARY ATTACK-----------------------------------------------------------------------
-# begin with a _very_ simple and naive dictionary attack. This is blazing fast and 
+# begin with a _very_ simple and naive dictionary attack. This is blazing fast and
 # I've seen it crack ~20% of hashes
 "$HASHCAT" -m "$HASH_TYPE" -a 0 "$HASH_FILE" dicts/rockyou.txt --potfile-path "$POT_FILE"
 
@@ -52,6 +57,6 @@ fi
 # MASK ATTACK (BRUTE-FORCE)---------------------------------------------------------------
 "$HASHCAT" -m "$HASH_TYPE" -a 3 "$HASH_FILE" hashcat-3.6.0/masks/rockyou-1-60.hcmask --potfile-path "$POT_FILE"
 
-# COMBINATION ATTACK---------------------------------------------------------------------- 
+# COMBINATION ATTACK----------------------------------------------------------------------
 # this one can take 12+ hours, don't use it by default
-# "$HASHCAT" -m "$HASH_TYPE" -a 1 "$HASH_FILE" dicts/rockyou.txt dicts/rockyou.txt --potfile-path "POT_FILE" 
+# "$HASHCAT" -m "$HASH_TYPE" -a 1 "$HASH_FILE" dicts/rockyou.txt dicts/rockyou.txt --potfile-path "POT_FILE"
