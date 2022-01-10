@@ -25,13 +25,13 @@ curl -L -o dicts/rockyou.txt https://github.com/brannondorsey/naive-hashcat/rele
 `./naive-hashcat.sh` assumes that you have hashed passwords that you would like to know the plaintext equivalent of. Likely, you've come across a text file that contains leaked accounts/emails/usernames matched with a cryptographic hash of a corresponding password. Esentially something that looks like:
 
 ```
-neli_dayanti@yahoo.co.id:01e870ebb01160f881ffaa6764acd01f
-hastomoanggi@gmail.com:f15a413c1835014679a286ee84a212d4
-yogipandu86@gmail.com:e4fdf3291654751def4e6816fddce608
-fadlilamegy1@gmail.com:8ebd79c9b13240ab3767a64b4faae7be
-ridho6kr@gmail.com:33816712db4f3913ee967469fe7ee982
-yogaardamanta17@gmail.com:3e46fb7125915cdf34df21342004f82f
-yogahadikusuma@gmail.com:bf0e20a03a01ae215deb9b36e173cd9a
+neli_dayanti@yahoo.co.id:8243ffbe195d27c02247921d31dff199
+hastomoanggi@gmail.com:c90ae688b2a3b1fd0751fd743eb385cd
+yogipandu86@gmail.com:933dd8674c563081260867dfa95b5e74
+fadlilamegy1@gmail.com:795f3202b17cb6bc3d4b771d8c6c9eaf
+ridho6kr@gmail.com:d55669822f1a8cf72ec1911e462a54eb
+yogaardamanta17@gmail.com:b807023f87e63b8ada92f79f546ff9cc
+yogahadikusuma@gmail.com:0f5264038205edfb1ac05fbb0e8c5e94
 ```
 
 (⬆⬆⬆ not real hashes btw, don't get any ideas...)
@@ -41,13 +41,13 @@ If you don't have such a file, [pastebin.com](http://pastebin.com) is a popular 
 Once you've got some hashes, save them to a file with one hash per line. For example, `hashes.txt`:
 
 ```
-01e870ebb01160f881ffaa6764acd01f
-f15a413c1835014679a286ee84a212d4
-e4fdf3291654751def4e6816fddce608
-8ebd79c9b13240ab3767a64b4faae7be
-33816712db4f3913ee967469fe7ee982
-3e46fb7125915cdf34df21342004f82f
-bf0e20a03a01ae215deb9b36e173cd9a
+8243ffbe195d27c02247921d31dff199
+c90ae688b2a3b1fd0751fd743eb385cd
+933dd8674c563081260867dfa95b5e74
+795f3202b17cb6bc3d4b771d8c6c9eaf
+d55669822f1a8cf72ec1911e462a54eb
+b807023f87e63b8ada92f79f546ff9cc
+0f5264038205edfb1ac05fbb0e8c5e94
 ```
 
 To crack your hashes, pass this file as `HASH_FILE=hashes.txt` to the command below.
@@ -342,4 +342,4 @@ Below is a list of hash-type codes supported by hashcat. If you don't know the t
   15600 | Ethereum Wallet, PBKDF2-HMAC-SHA256              | Password Managers
   15700 | Ethereum Wallet, SCRYPT                          | Password Managers
   99999 | Plaintext                                        | Plaintext
-``` 
+```
